@@ -1,3 +1,6 @@
+This is the data set after cleaning noises. This was used for the corresponding data analyses.
+
+
 Timestamp,Consent,Age,Gender,Location,Educational Level,Domain,AI Usage Frequency,M1,M2,M3,M4,M5,M6,M7,M8,M9,M10,M11,M12,M13,M14,M15,M16,M17,M18,M19,M20,T1,T2,T3,V1,V2,V3,V4,V5,V6,V7,V8,V9,V10,V11,V12,W1,W2,W3,W4,W5,W6,W7,W8,W9,W10,W11,W12,Motive,Trust,Vigilance,Well-being
 17-03-2026 21:43,I agree to participate,20,Woman,West Bengal,Undergraduate,Social Sciences,Often,2.0,3.0,3.0,3.0,3.0,3.0,3.0,2.0,3.0,1.0,5.0,3.0,2.0,3.0,1.0,3.0,3.0,3.0,2.0,1.0,1.0,2.0,3.0,4.0,4.0,4.0,3.0,3.0,3.0,3.0,3.0,2.0,5.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,4.0,2.0,4.0,3.0,3.0,3.0,52.0,6.0,40.0,37.0
 17-03-2026 21:47,I agree to participate,20,Woman,West Bengal,Undergraduate,Social Sciences,Always,3.0,3.0,4.0,3.0,4.0,2.0,4.0,3.0,3.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,3.0,3.0,1.0,3.0,4.0,5.0,4.0,4.0,4.0,1.0,2.0,4.0,4.0,4.0,4.0,2.0,2.0,1.0,3.0,2.0,3.0,4.0,3.0,4.0,5.0,4.0,5.0,4.0,3.0,5.0,1.0,67.0,13.0,35.0,43.0
