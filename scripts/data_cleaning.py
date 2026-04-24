@@ -183,3 +183,107 @@ def map_domain(study):
         return study.title()
 #clean format
 responses['Domain']=responses['Domain'].apply(map_domain)
+
+
+----------------------------
+# DATA ELIMINATION #
+----------------------------
+
+# eliminating responses adhering to the age constraint and saving the discarded data
+responses['Age']=responses['Age'].astype(int)
+dropped_item=responses[responses['Age']>25]
+responses = responses[responses['Age']<=25].reset_index(drop=True)
+
+# eliminating responses adhering to the location constraint and saving the discarded data
+states=['West Bengal','Bihar','Punjab','Maharashtra','Karnataka','Sikkim','Jharkhand','Odisha',
+        'Kerala','Uttar Pradesh','Delhi','Madhya Pradesh','Andhra Pradesh','Assam']
+drop_loc =  responses[~responses['Location'].isin(states)]
+responses = responses[responses['Location'].isin(states)].reset_index(drop=True)
+
+
+----------------------------
+# VISUALIZATION #
+----------------------------
+
+## AI Usage Frequency pie-chart
+
+import matplotlib.pyplot as plt
+#data to plot
+labels= counts.index
+sizes= counts.values
+#create pie
+plt.pie(sizes,labels=labels)
+#perfect circle
+plt.axis=('equal')
+plt.show
+
+## Participant distribution based on Gender pie chart
+
+count_gender = responses['Gender'].value_counts()
+labels = count_gender.index
+size = count_gender.values
+my_colors=['lightcoral','cornflowerblue','orange','grey']
+#create pie
+plt.pie(size,labels=labels,
+        autopct='%1.1f%%',
+        explode= (0.03,0.03,0.3,0.3),
+        colors = my_colors)
+plt.title('Distribution of Participants', fontsize=15, fontweight='bold')
+plt.axis=('equal')
+plt.show
+
+## Participant distribution based on Educational Level pie chart
+
+count_el = responses['Educational Level'].value_counts()
+labels = count_el.index
+size = count_el.values
+my_colors=['yellow','purple','orange','grey']
+#create pie
+plt.pie(size,labels=labels,
+        autopct='%1.1f%%',
+        explode= (0.03,0.03,0.3,0.3),
+        colors = my_colors)
+plt.title('Distribution of Participants', fontsize=15, fontweight='bold')
+plt.axis=('equal')
+plt.show
+
+## Participant distribution based on location horizontal bar graph
+
+count_location = responses['Location'].value_counts()
+states = count_location.index
+frequency = count_location.values
+# top 5 states
+top5 = count_location.head(5)
+others = count_location[5:].sum()
+#ascending order
+final_data = top5.copy()
+final_data['Others'] = others
+final_data = final_data.sort_values(ascending=True)
+plt.figure(figsize=(6,4))
+bars = plt.barh(final_data.index, final_data.values)
+#create Bar-graph
+plt.ylabel('States')
+plt.xlabel('No. of Participants')
+plt.title('Location of Participants', fontsize=15, fontweight='bold')
+plt.bar_label(bars)
+plt.tight_layout()
+plt.show()
+plt.savefig('Location of Participants.png') #saving as png
+
+## Participant distribution based on Domian of Education horizontal bar graph
+
+count_domain = responses['Domain'].value_counts()
+study = count_domain.index
+frequency = count_domain.values
+#ascending order
+final_data = count_domain.sort_values(ascending=True)
+plt.figure(figsize=(6,4))
+bars = plt.barh(final_data.index, final_data.values, color='darkgreen')
+#create Bar-graph
+plt.xlabel('No. of Participants')
+plt.ylabel('Domains of Education')
+plt.title('Educational Domains of Participants', fontsize=15, fontweight='bold')
+plt.bar_label(bars)
+plt.tight_layout()
+plt.show()
+plt.savefig('Educational Domains of Participants.png') #saving as png
