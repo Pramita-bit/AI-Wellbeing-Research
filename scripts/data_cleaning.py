@@ -14,9 +14,9 @@ responses.columns = ['Timestamp','Consent','Age','Gender','Location','Educationa
 pd.set_option('display.max_rows',None)
 
 
-----------------------------
+---------------------
 # DATA CLEANING #
-----------------------------
+---------------------
 
 #to check how many null values there are
 responses.isnull().sum()
@@ -185,9 +185,9 @@ def map_domain(study):
 responses['Domain']=responses['Domain'].apply(map_domain)
 
 
-----------------------------
+------------------------
 # DATA ELIMINATION #
-----------------------------
+------------------------
 
 # eliminating responses adhering to the age constraint and saving the discarded data
 responses['Age']=responses['Age'].astype(int)
@@ -201,9 +201,9 @@ drop_loc =  responses[~responses['Location'].isin(states)]
 responses = responses[responses['Location'].isin(states)].reset_index(drop=True)
 
 
-----------------------------
+--------------------
 # VISUALIZATION #
-----------------------------
+--------------------
 
 ## AI Usage Frequency pie-chart
 
@@ -287,3 +287,45 @@ plt.bar_label(bars)
 plt.tight_layout()
 plt.show()
 plt.savefig('Educational Domains of Participants.png') #saving as png
+
+
+--------------
+# SCORING #
+--------------
+
+# Usage Scale items
+scale1 = responses[['M1','M2','M3','M4','M5','M6','M7','M8','M9','M10','M11','M12','M13','M14','M15','M16','M17','M18','M19','M20']]
+# Trust scale items
+scale2= responses[['T1','T2','T3']]
+# Vigilance Scale Items
+scale3= responses[['V1','V2','V3','V4','V5','V6','V7','V8','V9','V10','V11','V12']]
+#reverse Scoring
+responses['W11']= 6-responses['W11']
+responses['W12']= 6-responses['W12']
+# Well-being Scale items
+scale4= responses[['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12']]
+
+# Calculating total scores of each participant
+responses['Motive']=scale1.sum(axis=1)
+responses['Trust']=scale2.sum(axis=1)
+responses['Vigilance']=scale3.sum(axis=1)
+responses['Well-being']=scale4.sum(axis=1)
+
+
+-------------
+# SAVING #
+-------------
+
+# saving the cleaned reverse scored data set 
+responses.to_csv('cleaned_reverse.csv',index=False)
+
+
+-------------
+# REMARKS #
+-------------
+
+# Initial cleaning is completed.
+#Initial number of participants = 153
+#After cleaning, the number of participants = 143
+#Discarded due to age = 9
+#Discarded due to location = 1
