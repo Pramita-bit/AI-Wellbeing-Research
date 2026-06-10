@@ -95,9 +95,9 @@ The following analyses were performed:
 
 ##  Results
 
-The results of this study are currently under academic review as part of a Bachelor's dissertation in Psychology.
+The results of this study passed the academic review process as part of a Bachelor's research project in Psychology.
 
-📌 Results will be made available on research platforms (e.g., ResearchGate / journal publication) after formal evaluation and approval.
+📌 Results will be made available on research platforms (e.g., ResearchGate / journal publication) after increasing the sample size and publication. 
 
 ---
 
@@ -112,7 +112,7 @@ The results of this study are currently under academic review as part of a Bache
 
 ##  Disclaimer
 
-This project is part of an academic dissertation and is shared for educational and research purposes only. Data should not be reused without permission.
+This project is part of an academic research project and is shared for educational and research purposes only. Data should not be reused without permission.
 
 ---
 
